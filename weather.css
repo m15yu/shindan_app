@@ -1,0 +1,13 @@
+.map{
+    position: relative;
+}
+.map p {
+  position: absolute;/*絶対配置*/
+  color: white;
+  top: 0;
+  left: 0;
+  }
+
+.map img {
+  width: 100%;
+  }

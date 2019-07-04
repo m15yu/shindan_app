@@ -1,24 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="weather.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <title>Document</title>
     <script>
         // http://localhost:3000/weather?city=??のURLを文字列で作って、
         // axiosでリクエストし、レスポンスを受け取ることで、画面遷移なしで天気APIから結果を受け取ることもできる。
+        const app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            created: function () {
+                this.urlCreate();
+            },
+            methods: {
+                urlCreat() {
+                    const url = window.location
+                }
+            });
+        const axios = require('axios');
+        axios
+            .get("http://weather.livedoor.com/forecast/webservice/json/v1?city=" + cityId)
+            .then(response => {
+                res.send(response.data.forecasts);
+            })
     </script>
 </head>
+
 <body>
+    <div class="map">
+        <img src="japanMap.jpg" />
+        <p>稚内</p>
+    </div>
     <form action="http://localhost:3000/weather" method="GET">
         <select name="city">
+            <option value="011000">稚内</option>
+            <option value="012010">旭川</option>
+            <option value="012020">留萌</option>
             <option value="013010">網走</option>
-            <option value="190010">甲府</option>
-            <option value="260010">京都</option>
-            <option value="340010">広島</option>
+            <option value="013020">北見</option>
+            <option value="013030">紋別</option>
+            <option value="014010">根室</option>
+            <option value="014020">釧路</option>
+            <option value="014030">帯広</option>
+            <option value="015010">室蘭</option>
+            <option value="015020">浦河</option>
+            <option value="016010">札幌</option>
+            <option value="016020">岩見沢</option>
+            <option value="016030">倶知安</option>
+            <option value="017010">函館</option>
+            <option value="017020">江差</option>
+            <option value="020010">青森</option>
+            <option value="020020">むつ</option>
+            <option value="020030">八戸</option>
+            <option value="030010">盛岡</option>
+            <option value="030020">宮古</option>
+            <option value="030030">大船渡</option>
+            <option value="040010">仙台</option>
+            <option value="040020">白石</option>
+            <option value="050010">秋田</option>
+            <option value="050020">横手</option>
+            <option value="060010">山形</option>
+            <option value="060020">米沢</option>
+            <option value="060030">酒田</option>
+            <option value="060040">新庄</option>
+            <option value="070010">福島</option>
+            <option value="070020">小名浜</option>
+            <option value="070030">若松</option>
+            <option value="080010">水戸</option>
+            <option value="080020">土浦</option>
+            <option value="090010">宇都宮</option>
+            <option value="090020">大田原</option>
+            <option value="100010">前橋</option>
+            <option value="100020">みなかみ</option>
+            <option value="110010">さいたま</option>
+            <option value="110020">熊谷</option>
+            <option value="110030">秩父</option>
+            <option value="120010">千葉</option>
+            <option value="120020">銚子</option>
+            <option value="120030">館山</option>
+            <option value="130010">東京</option>
+            <option value="130020">大島</option>
+            <option value="130030">八丈島</option>
+            <option value="130040">父島</option>
         </select>
         <input type="submit" name="send" />
     </form>
 </body>
+
 </html>
