@@ -5,20 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        // http://localhost:3000/weather?city=??のURLを文字列で作って、
-        // axiosでリクエストし、レスポンスを受け取ることで、画面遷移なしで天気APIから結果を受け取ることもできる。
+        const callWeatherApi = ()=>{
+            // 都市IDを取得
+            const cityId = document.getElementById("select_city").value;
+            axios.get("http://localhost:3000/weather?city=" + cityId).then(response => {
+                console.log(response);
+                //TODO developerToolをつかって、responseの中身を確認し、weather_resのエレメント内に表示してみる
+            }).catch(err => {
+                console.log("err:", err);
+            });
+        }
     </script>
 </head>
 <body>
-    <form action="http://localhost:3000/weather" method="GET">
-        <select name="city">
+    <div>
+        <select id="select_city">
             <option value="013010">網走</option>
             <option value="190010">甲府</option>
             <option value="260010">京都</option>
             <option value="340010">広島</option>
         </select>
-        <input type="submit" name="send" />
-    </form>
+        <button onclick="callWeatherApi();">call API</button>
+    </div>
+    <div id="weather_res">
+        ここにAPIのレスポンスを表示したい
+    </div>
 </body>
 </html>
