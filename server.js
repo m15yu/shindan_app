@@ -21,19 +21,21 @@ app.get('/', (req, res) => {
 
 app.get('/weather', (req, res) => {
     if (req.query.city){
-
+        let cityId = req.query.city;
+        axios
+            .get("http://weather.livedoor.com/forecast/webservice/json/v1?city=" + cityId)
+            .then(response => {
+                // console.log("status:", response.status); // 200
+                // console.log("body:", response.data); // response body.
+                res.send(response.data.forecasts);
+            })
+            .catch(err => {
+                console.log("err:", err);
+            });
+    } else {
+        res.send("no cityId");
     }
-    let cityId = 400040; //久留米
-    axios
-        .get("http://weather.livedoor.com/forecast/webservice/json/v1?city=" + cityId)
-        .then(response => {
-            console.log("status:", response.status); // 200
-            console.log("body:", response.data); // response body.
-            res.send(response.data.forecasts);
-        })
-        .catch(err => {
-            console.log("err:", err);
-        });
+    
 });
 
 app.get('/shindan', (req, res) => {

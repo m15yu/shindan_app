@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // http://localhost:3000/weather?city=??のURLを文字列で作って、
+        // axiosでリクエストし、レスポンスを受け取ることで、画面遷移なしで天気APIから結果を受け取ることもできる。
+    </script>
+</head>
+<body>
+    <form action="http://localhost:3000/weather" method="GET">
+        <select name="city">
+            <option value="013010">網走</option>
+            <option value="190010">甲府</option>
+            <option value="260010">京都</option>
+            <option value="340010">広島</option>
+        </select>
+        <input type="submit" name="send" />
+    </form>
+</body>
+</html>
