@@ -20,8 +20,10 @@ app.get('/', (req, res) => {
 // getのリクエストでパスが/に対応　ここまで
 
 app.get('/weather', (req, res) => {
-    if (req.query.city)
-        let cityId = 400040; //久留米
+    if (req.query.city){
+
+    }
+    let cityId = 400040; //久留米
     axios
         .get("http://weather.livedoor.com/forecast/webservice/json/v1?city=" + cityId)
         .then(response => {
@@ -32,11 +34,11 @@ app.get('/weather', (req, res) => {
         .catch(err => {
             console.log("err:", err);
         });
-
 });
 
 app.get('/shindan', (req, res) => {
     console.log(req.query);
+
     const name = req.query;
     const result = [
         { "res": "1xxxx", "description": "xxxxx" },
@@ -75,6 +77,8 @@ app.get('/shindan', (req, res) => {
         res.send(result[10]);
     } else {
         res.send(result[11]);
-    });
+    }
+
+});
 
 app.listen(port);
